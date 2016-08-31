@@ -1,0 +1,50 @@
+/**
+ * Generate the carousel animation
+ * based on the number of frames
+ * and the pourcentage of a frame spent static
+ *
+ * @param {Number} $$frames - number of frames
+ * @param {Number} $static - percentage of the animation spent static per frame
+ * @param {String} $animation-name ('carousel') - animation name
+ */
+
+@mixin carousel-animation($frames, $static, $animation-name: 'carousel') {
+  // Make `$static` a percentage in case it's unitless
+  @if unitless($static) {
+    $static: percentage($static);
+  }
+
+  // Compute the percentage of animation spent animating for each frame
+  $animating: (100% - $frames * $static) / ($frames - 1);
+
+  // Output the animation at root level
+  // to make sure it doesn't crash if called in a selector
+  @at-root {
+
+    // Create an animation
+    @keyframes #{$animation-name} {
+
+      // Loop over the frames
+      @for $i from 0 to $frames {
+        // Compute keyframes
+        $current-frame: $i * $static + $i * $animating;
+        $next-frame: ($i + 1) * $static + $i * $animating;
+        $halfway-frame: $i * $static / 1% + ($i - 1) * $animating + $animating / 2;
+
+        // Output halfway styles for blur
+        // Avoid a negative keyframes by making sure `$i` is at least `1`
+        @if $i > 0 {
+          #{$halfway-frame} {
+            filter: blur(2px);
+          }
+        }
+
+        // Output styles for each frame
+        #{$current-frame, $next-frame} {
+          transform: translateX($i * -100% / $frames);
+          filter: blur(0);
+        }
+      }
+    }
+  }
+}

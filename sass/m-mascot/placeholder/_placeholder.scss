@@ -1,0 +1,86 @@
+@import '../functions/function';
+
+
+// 定义全局 map，保存混合宏的相关信息
+$placeholder-global-map:();
+
+@mixin placeholder($key,$value){
+  $placeholder-args: ($key$value);
+  // 在全局 map 中通过 key($my-args) 查找这些参数
+  $id: map-get($placeholder-global-map, $placeholder-args);
+  // 如果找到了 id
+  @if $id { 
+    // 扩展该 id
+    @extend %#{$id}; 
+  }
+  // 否则
+  @else {
+    // 新建一个 id
+    $id: unique-id();
+    // 将该 id 整合入混合宏的 map 中
+    $placeholder-global-map: map-merge($placeholder-global-map, ($placeholder-args: $id)) !global;
+    // 在样式顶层生成占位符
+    @at-root {
+      %#{$id} {
+      	// 生成共有样式
+      	@if type-of($value) == number and unit($value) == px {
+          #{$key} : px2rem($value);
+        } @else {
+          #{$key} : $value;
+        }
+      }    
+    }
+    // 扩展该占位符
+    @extend %#{$id};
+  }
+}
+
+// 自意识混合宏示例
+
+// 定义全局 map，保存混合宏的相关信息
+// $my-mixin-info: ();
+
+// // 使用任意形式的参数定义混合宏
+// @mixin my-mixin($pos1, $pos2) {
+
+//   // 根据需要，捕获部分或全部参数
+//   $my-args: ($pos1, $pos2);
+
+//     // 在全局 map 中通过 key($my-args) 查找这些参数
+//   $id: map-get($my-mixin-info, $my-args);
+
+//   // 如果找到了 id
+//   @if $id { 
+
+//     // 扩展该 id
+//     @extend %#{$id}; 
+
+//     // 生成任意特定的样式
+//     //specific: inspect($rest);
+//   }
+
+//   // 否则
+//   @else {
+
+//     // 新建一个 id
+//     $id: unique-id();
+
+//       // 将该 id 整合入混合宏的 map 中
+//     $my-mixin-info: map-merge($my-mixin-info, ($my-args: $id)) !global;
+
+//         // 在样式顶层生成占位符
+//     @at-root {
+//       %#{$id} {
+
+//         // 生成共有样式
+//         common: inspect($my-args);
+//       }    
+//     }
+
+//     // 扩展该占位符
+//     @extend %#{$id};
+
+//     // 生成任意特定的样式
+//     //specific: inspect($rest);
+//   }
+// }

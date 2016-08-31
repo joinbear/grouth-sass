@@ -1,0 +1,31 @@
+
+// Color  Function
+///**
+// * [color return the passing color of group ]
+// * @param  {[type]} $group          [group name]
+// * @param  {[type]} $shade:normal   [the color id]
+// * @param  {[type]} $transparency:1 [transparent-dmixinefault value : 1]
+// * @return {[type]}                 [Return 16 color or RGBA color ]
+// */
+@function color($group, $shade: normal, $transparency:1 ,$color-map:$__color-collections-map){
+  @each $color in $color-map {
+    $key-group: map-get($color, group);
+    $key-shade: map-get($color, id);
+    $key-color: map-get($color, color);
+    @if($group == $key-group and $shade == $key-shade){
+      @return rgba($key-color,$transparency);
+    }
+  }
+}
+//**demo***
+//body{
+//  color: color(blue, normal,.8);
+//}
+//p{
+//  color: color(orange);
+//}
+//blockquote{
+//  color: color(blue);
+//  background: color(orange, pale,.4,global);
+//  border-color: color(orange, dark);
+//}

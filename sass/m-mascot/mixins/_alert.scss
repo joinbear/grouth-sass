@@ -1,0 +1,156 @@
+@import '../placeholder/placeholder';
+@import '../functions/px2rem';
+@import './center';
+@import './mask';
+
+$toast-bg-start     : #dfdfdf;
+$toast-bg-end       : #e9e9e9;
+$toast-color        : #202020;
+$toast-title-color  : #000;
+$toast-button-color : #1b85fb;
+$toast-border-color : #b5b5b5;
+
+// 弹窗box
+@mixin toast-box($width:60%) {
+	@include center-translate();
+	box-shadow:0 0 8px rgba(0, 0, 0, 0.1);
+  width: $width;
+  background-color: #fff;
+  @include placeholder(border-radius,0.25rem);
+  @include placeholder(color,$toast-color);
+  @include placeholder(text-align,center);
+  animation: bounceIn 0.3s ease-in-out;
+  z-index: 990;
+}
+// 确认弹窗
+@mixin confirm(){
+	@include mask();
+	.toast-box {
+		@include toast-box();
+	  @at-root {
+	  	.toast-title {
+		  	padding-top: 0.35rem;
+				@include font-dpr(16px);
+				@include placeholder(text-align,center);
+				@include placeholder(color,$toast-title-color);
+			}
+			.toast-content {
+				@include font-dpr(14px);
+				padding-bottom: 0.25rem;
+				line-height: 1.4;
+			}
+			.toast-footer {
+				@include placeholder(border-top,px2rem(1px) solid $toast-border-color);
+				display: box;  
+			  display: flexbox;  
+			  display: flex; 
+			}
+			.toast-button {
+		  	padding: 0.25rem 0;
+		  	flex: 1;
+		  	@include placeholder(text-align,center);
+				@include placeholder(color,$toast-button-color);
+				@include font-dpr(16px);
+		  }
+		  .toast-button:last-child {
+		  	@include placeholder(border-left,1px solid $toast-border-color);
+		  }
+		  .toast-animate {
+  		  -webkit-animation-name : bounceIn;
+								animation-name : bounceIn;
+		  }
+	  }
+	}
+}
+// 类似toast提示信息
+@mixin toast(){
+	@include mask();
+	.toast-box {
+		@include toast-box();
+	  @at-root {
+	  	.toast-tips {
+	  		padding: 0.75rem 0.35rem;
+	  		line-height: 2.4;
+	  	}
+	  	.toast-animate {
+  		  -webkit-animation-name : bounceIn;
+								animation-name : bounceIn;
+		  }
+	  }
+	}
+}
+// <div class="toast">
+// 	<div class="toast-box toast-animate">
+// 		<div class="toast-header">
+// 			<div class="toast-title">测试</div>
+// 			<div class="toast-content">也是开放的数量</div>
+// 		</div>
+// 		<div class="toast-footer">
+// 			<div class="toast-button">确定</div>
+// 			<div class="toast-button">取消</div>
+// 		</div>
+// 	</div>
+// </div>
+// 
+// loading 
+@mixin loading(){
+	@include mask();
+	.loading-box {
+		@include toast-box();
+		background:none;
+		box-shadow:none;
+		@at-root { 
+			.loading-icon{
+				width: px2rem(40px);
+				height: px2rem(40px); 
+				margin-left: px2rem(8px); 
+				display:inline-block; 
+				background-color:#fff;
+				border-radius:100%;
+			}
+			.loading-icon{
+				-webkit-animation: bouncedelay 1.4s infinite ease-in-out; 
+								animation: bouncedelay 1.4s infinite ease-in-out; 
+				-webkit-animation-fill-mode: both; 
+								animation-fill-mode: both;
+			}
+			.loading-icon:first-child{
+				margin-left:0; 
+				-webkit-animation-delay: 0.32s; 
+								animation-delay: 0.32s;
+			}
+			.loading-icon.loading-two{
+				-webkit-animation-delay: 0.16s; 
+								animation-delay: 0.16s;
+			}
+		}
+	}
+}
+@keyframes bounceIn { 
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+@-webkit-keyframes bouncedelay{
+    0%,80%,100%{
+    	-webkit-transform:scale(0);
+    					transform:scale(0); 
+    }
+    40%{
+    	-webkit-transform:scale(1);
+							transform:scale(1);
+    }
+}
+@keyframes bouncedelay{
+    0%,80%,100%{
+    	-webkit-transform:scale(0);
+    					transform:scale(0); 
+    }
+    40%{
+    	-webkit-transform:scale(1);
+    					transform:scale(1); 
+    }
+}

@@ -1,0 +1,15 @@
+@import '../placeholder/placeholder';
+@import '../functions/function';
+// 遮罩层
+@mixin mask($position:absolute,$placeholder:false) {
+  $zero: 0;
+  $mask-map:(
+    background-color:rgba(0,0,0,0.5),
+    position:$position,
+    left: $zero,
+    right: $zero,
+    top: $zero,
+    bottom: $zero
+  );
+  @include map-element-build($mask-map,$placeholder);
+}

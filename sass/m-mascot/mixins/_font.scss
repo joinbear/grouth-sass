@@ -1,0 +1,26 @@
+@import '../placeholder/placeholder';
+@import './scale';
+
+
+@mixin font-dpr($font-size,$placeholder:true){
+
+  @include placeholder(font-size, $font-size);
+  [data-dpr="2"] & {
+    @include placeholder(font-size, $font-size * 2);
+  }
+  [data-dpr="3"] & {
+    @include placeholder(font-size, $font-size * 3 );
+  }
+
+}
+
+@mixin font-smaller($font-size:10px){
+  @include scale(0.5);
+  font-size: $font-size * 2;
+  [data-dpr="2"] & {
+    @include placeholder(font-size, $font-size * 2 * 2);
+  }
+  [data-dpr="3"] & {
+    @include placeholder(font-size, $font-size * 3 * 2 );
+  }
+}

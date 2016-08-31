@@ -1,0 +1,108 @@
+@import '../placeholder/placeholder';
+
+//$map : map object
+//$direction : the caret direction(left , top , right , bottom)
+//$border-width : the border width
+//$border-type : the border type like solid dashed and so on.
+@mixin build-border($map,$direction,$border-width,$border-type){
+  @each $key,$value in $map {
+    @if($key == $direction){
+      border-#{$key}:none;
+    }@else{
+      border-#{$key}:$border-width $border-type $value;
+    }
+  }
+}
+
+// caret mixin
+// $position: fixed absolute
+// $caret-width:the caret width
+// $border-width:the  border width
+// $direction: the direction of the caret(top left right bottom)
+// $border-color:the border color
+// $background-color: the caret background-color
+@mixin caret($caret-width,$border-width,$direction,$border-color,$background-color,$position:absolute){
+
+  // variables
+  $zero: 0;
+  $border-type: solid;
+  // calculate the arrow width
+  $arrow-width: $caret-width - $border-width;
+  $transparent: transparent;
+
+  // the top location of the caret
+  $caret-top: $zero;
+  // the left location of the caret
+  $caret-left: $zero;
+  // the top location of the border
+  $border-top: if($direction == right,$zero,$border-width);
+  // the left location of the border
+  $border-left: if($direction == bottom,$zero,$border-width);
+
+  $caret-map:(
+    left:if($direction == right,$border-color,$transparent),
+    right:if($direction == left,$border-color,$transparent),
+    top:if($direction == bottom,$border-color,$transparent),
+    bottom:if($direction == top,$border-color,$transparent)
+  );
+
+  $border-map:(
+    left:if($direction == right,$background-color,$transparent),
+    right:if($direction == left,$background-color,$transparent),
+    top:if($direction == bottom,$background-color,$transparent),
+    bottom:if($direction == top,$background-color,$transparent)
+  );
+
+  @include placeholder(position,$position);
+  &:before,
+  &:after {
+    content:"";
+    @include placeholder(position,absolute);
+  }
+  &:before {
+    top: $caret-top;
+    left: $caret-left;
+    @include build-border($caret-map,$direction,$caret-width,$border-type);
+  }
+  &:after {
+    left: $border-top;
+    top: $border-left;
+    @include build-border($border-map,$direction,$arrow-width,$border-type);
+  }
+}
+
+@mixin caret-arrow($caret-width,$border-width,$border-color,$background-color,$direction:left){
+  @include caret($caret-width,$border-width,$direction,$border-color,$background-color);
+  @content;
+}
+
+@mixin caret-fill($caret-width,$background-color,$direction:left){
+  @include caret($caret-width,0,$direction,$background-color,transparent);
+  @content;
+}
+
+/** ===========demo========
+.tips {
+  width: 200px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  position: relative;
+  margin: 20px auto;
+  border: 1px solid orange;
+  border-radius: 3px;
+
+  .caret {
+    @include caret-arrow(30px,10px,red,#fff,left){
+      top: -10px;
+      left: 10px;
+    }
+  }
+  .caret-1 {
+    @include caret-fill(30px,red){
+      top: -10px;
+      left: 100px;
+    }
+  }
+}
+*/

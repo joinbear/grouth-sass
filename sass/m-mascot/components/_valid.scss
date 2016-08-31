@@ -1,0 +1,14 @@
+@mixin valid() {
+  &:valid,
+  &:empty:valid,
+  &:focus:empty:valid {
+    @content;
+  }
+}
+
+@mixin invalid() {
+  &:invalid,
+  &:focus:invalid {
+    @content;
+  }
+}

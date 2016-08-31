@@ -1,0 +1,36 @@
+$media-stack:
+  (group: tablet, id: general, rule: "only screen and (min-device-width: 700px)"),
+  (group: small, id: general, rule: "only screen and(min-device-width: 1100px)"),
+  (group: small, id: inbetween, rule: "only screen and(min-device-width: 1100px) and (max-device-width: 1400px)"),
+  (group: large, id: general, rule: "only screen and(min-device-width: 1400px)"),
+  (group: print, id: general, rule: "only print and"),
+  (group: custom, id: screen, rule: "only screen and");
+
+//@mixin media($group, $id: general, $customRule: ""){
+//  @each $media in $media-stack{
+//    @if($group == map-get($media, group) and $id == map-get($media, id)){
+//      $rule: map-get($media, rule);
+//      @media #{$rule}  #{$customRule} {
+//        @content
+//      }
+//    }
+//  }
+//}
+
+/**demo**
+h1{
+  color: #333;
+  @include media(tablet){
+    font-size: 1rem;
+  };
+  @include media(small, inbetween){
+    font-size: 1.2rem;
+  };
+  @include media(small){
+    color: #000;
+  };
+  @include media(custom, screen, " (max-device-width: 360px)"){
+    color: blue;
+  };
+}
+*/

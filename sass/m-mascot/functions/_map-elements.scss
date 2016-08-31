@@ -1,0 +1,17 @@
+@mixin map-element-build($map,$placeholder){
+  @each $key,$value in $map{
+    @if($placeholder){
+      @include placeholder($key,$value);
+    }@else{
+      #{$key} : $value;
+    }
+  }
+}
+
+@mixin element-build($name,$value,$placeholder){
+  @if($placeholder){
+    @include placeholder($name,$value);
+  }@else{
+    #{$name}:$value;
+  }
+};

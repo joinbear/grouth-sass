@@ -1,0 +1,16 @@
+// font mixin
+@function font-face($type:computer,$font-face: ''){
+
+  //the font-face of mobile
+  $font-mobile: Tahoma,Arial,Roboto,"Droid Sans","Helvetica Neue","Droid Sans Fallback","Heiti SC",sans-serif + $font-face ;
+
+  //the font-face of computer
+  $font-computer: Tahoma,Arial,"Helvetica Neue","Hiragino Sans GB",Simsun,sans-serif, Microsoft Yahei,"微软雅黑" + $font-face;
+
+  @if($type == computer){
+    @return $font-computer;
+  }@else{
+    @return $font-mobile;
+  }
+
+}

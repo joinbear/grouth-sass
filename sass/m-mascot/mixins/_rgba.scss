@@ -1,0 +1,20 @@
+//背景色半透明 $filter 是否开启ie滤镜
+///**
+// * [bgcolor 背景色rgb mixin功能]
+// * @param  {[type]} $bgcolor        [背景颜色]
+// * @param  {[type]} $transparency:1 [透明度]
+// * @param  {[type]} $filter:false   [是否开启ie滤镜]
+// * @return {[type]}                 [description]
+// */
+@mixin bgcolor($bgcolor,$transparency:1,$filter:false){
+
+	$rgba-color:rgba($bgcolor,$transparency);
+	background-color: $rgba-color;
+    @if $filter{
+      filter:progid:DXImageTransform.Microsoft.gradient(enabled='true',startColorstr='#{ie-hex-str($rgba-color)}', endColorstr='#{ie-hex-str($rgba-color)}');
+      background:none\9\0;//css hack only ie9 support
+    }@else{
+      background-color: $bgcolor;
+    }
+  	
+}

@@ -1,0 +1,99 @@
+@charset "utf-8";
+
+// 构建单独的颜色体系,解决变量命名过程的冲突和覆盖问题,
+// 将颜色分类,通过函数将对应的颜色体系返回
+
+$__white  : #fff ;
+$__black  : #000 ;
+$__green  : green ;
+$__blue   : blue ;
+$__red    : #f00 ;
+$__yellow : #ff0 ;
+
+// 白色色系
+$__color-white-map:(
+  normal : $__white,
+  dark   : darken($__white,5%),
+  darker : darken($__white,10%)
+);
+// 黑色色系
+$__color-black-map:(
+  normal  : $__black,
+  light   : lighten($__black,13.5%),
+  lighter : lighten($__black,20%)
+);
+// 灰色色系
+$__color-gray-map:(
+  normal  : lighten($__black, 33.5%),
+  light   : lighten($__black,46.7%),
+  lighter : lighten($__black,93.5%)
+);
+// 蓝色色系
+$__color-blue-map:(
+  normal  : $__blue,
+  light   : darken(#428bca, 6.5%),
+  lighter : #5bc0de,
+  dark    : darken($__blue,5%),
+  darker  : darken($__blue,10%)
+);
+// 黄色色系
+$__color-yellow-map:(
+  normal  : $__yellow,
+  dark    : #ff851b,
+  darker  : #f0ad4e,
+  light   : lighten($__yellow,5%),
+  lighter : lighten($__yellow,10%)
+);
+// 绿色色系
+$__color-green-map:(
+  normal  : $__green,
+  dark    : #5cb85c,
+  darker  : #5cb85c,
+  light   : #01ff70,
+  lighter : lighten($__green,10%)
+);
+// 红色色系
+$__color-red-map:(
+  normal  : $__red,
+  dark    : #d9534f,
+  darker  : darken($__red,10%),
+  light   : #f012be,
+  lighter : #b10dc9
+);
+
+$__color-collections-map:
+(group:white,id:normal,color:map-get($__color-white-map,normal)),
+(group:white,id:dark,color:map-get($__color-white-map,dark)),
+(group:white,id:darker,color:map-get($__color-white-map,darker)),
+
+(group:black,id:normal,color:map-get($__color-black-map,normal)),
+(group:black,id:light,color:map-get($__color-black-map,light)),
+(group:black,id:lighter,color:map-get($__color-black-map,lighter)),
+
+(group:gray,id:normal,color:map-get($__color-gray-map,normal)),
+(group:gray,id:light,color:map-get($__color-gray-map,light)),
+(group:gray,id:lighter,color:map-get($__color-gray-map,lighter)),
+
+(group:blue,id:normal,color:map-get($__color-blue-map,normal)),
+(group:blue,id:dark,color:map-get($__color-blue-map,dark)),
+(group:blue,id:darker,color:map-get($__color-blue-map,darker)),
+(group:blue,id:light,color:map-get($__color-blue-map,light)),
+(group:blue,id:lighter,color:map-get($__color-blue-map,lighter)),
+
+(group:green,id:normal,color:map-get($__color-green-map,normal)),
+(group:green,id:dark,color:map-get($__color-green-map,dark)),
+(group:green,id:darker,color:map-get($__color-green-map,darker)),
+(group:green,id:light,color:map-get($__color-green-map,light)),
+(group:green,id:lighter,color:map-get($__color-green-map,lighter)),
+
+(group:yellow,id:normal,color:map-get($__color-yellow-map,normal)),
+(group:yellow,id:dark,color:map-get($__color-yellow-map,dark)),
+(group:yellow,id:darker,color:map-get($__color-yellow-map,darker)),
+(group:yellow,id:light,color:map-get($__color-yellow-map,light)),
+(group:yellow,id:lighter,color:map-get($__color-yellow-map,lighter)),
+
+(group:red,id:normal,color:map-get($__color-red-map,normal)),
+(group:red,id:dark,color:map-get($__color-red-map,dark)),
+(group:red,id:darker,color:map-get($__color-red-map,darker)),
+(group:red,id:light,color:map-get($__color-red-map,light)),
+(group:red,id:lighter,color:map-get($__color-red-map,lighter));

@@ -1,0 +1,8 @@
+// 缩放mixin
+@mixin scale($ratio:1) {
+  $scale-map:(
+    transform: scale($ratio),
+    transform-origin: 100% 100%
+  );
+  @include map-element-build($scale-map,true);
+}

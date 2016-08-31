@@ -1,0 +1,25 @@
+@mixin carousel-animation($frames, $static, $name: 'carousel') {
+  $animating: (100% - $frames * $static) / ($frames - 1);
+
+  @at-root {
+    @keyframes #{$name} {
+      // Animation logic here
+      @for $i from 0 to $frames {
+		    // $current-frame: ($i * $x) + ($i * $y);
+		    // $next-frame: (($i + 1) * $x) + ($i + $y);
+
+		    // #{$current-frame, $next-frame} {
+		    //   transform: translate3d($i * -100% / $frames, 0, 0);
+		    // }
+
+		    // $halfway-frame: $i * ($x / 1%) + ($i - 1) * $y + ($y / 2);
+
+		    // @if $i > 0 {
+		    //   #{$halfway-frame} {
+		    //     filter: blur(2px);
+		    //   }
+		    // }
+		  }
+    }
+  }
+}

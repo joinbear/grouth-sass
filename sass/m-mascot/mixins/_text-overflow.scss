@@ -1,0 +1,14 @@
+@import '../placeholder/placeholder';
+@import '../functions/function';
+
+
+// Text overflow
+// Requires inline-block or block for proper styling
+@mixin text-overflow($placeholder:false) {
+  $text-map:(
+    overflow:hidden,
+    text-overflow:ellipsis,
+    white-space:nowrap
+  );
+  @include map-element-build($text-map,$placeholder);
+}

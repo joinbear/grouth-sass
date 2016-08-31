@@ -1,0 +1,6 @@
+@import '../placeholder/placeholder';
+@import '../functions/function';
+
+@mixin float($type: left,$placeholder:true) {
+  @include element-build(float,$type,$placeholder);
+}

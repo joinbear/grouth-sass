@@ -1,0 +1,15 @@
+@import '../placeholder/placeholder';
+@import '../functions/function';
+
+@mixin box-shadow($shadow,$placeholder:false) {
+
+  @include element-build(box-shadow,$shadow,$placeholder);
+
+}
+
+// Box sizing
+@mixin box-sizing($type:border-box,$placeholder:false) {
+
+  @include element-build(box-sizing,$type,$placeholder);
+
+}

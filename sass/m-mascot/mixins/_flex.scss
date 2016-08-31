@@ -1,0 +1,59 @@
+@import '../placeholder/placeholder';
+@import '../functions/function';
+
+// flex mixin
+@mixin flex() {
+  display: -webkit-box; /* 老版本语法: Safari, iOS, Android browser, older WebKit browsers. */
+  display: flex; /* 新版本语法: Opera 12.1, Firefox 22+ */
+}
+
+@mixin flex-ratio($ratio: 1,$placeholder: true){
+  -webkit-box-flex: $ratio;
+  flex:$ratio;
+}
+
+//box-pack: start | end | center | justify;
+/*主轴对齐：左对齐（默认） | 右对齐 | 居中对齐 | 左右对齐*/
+//justify-content: flex-start | flex-end | center | space-between | space-around;
+/*主轴对齐方式：左对齐（默认） | 右对齐 | 居中对齐 | 两端对齐 | 平均分布*/
+@mixin flex-horizontal($type:center) {
+  -webkit-box-pack: $type;
+  -webkit-justify-content: $type;
+  justify-content: $type;
+}
+
+//box-align: start | end | center | baseline | stretch;
+/*交叉轴对齐：顶部对齐（默认） | 底部对齐 | 居中对齐 | 文本基线对齐 | 上下对齐并铺满*/
+//align-items: flex-start | flex-end | center | baseline | stretch;
+/*交叉轴对齐方式：顶部对齐（默认） | 底部对齐 | 居中对齐 | 上下对齐并铺满 | 文本基线对齐*/
+@mixin flex-vertical($type:center){
+  -webkit-box-align: $type;
+  -webkit-align-items: $type;
+  align-items: $type;
+}
+
+@mixin flex-direction($direction:left){
+  @if($direction == left){
+    -webkit-box-direction: normal;
+    -webkit-box-orient: horizontal;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+  }@else if($direction == right) {
+    -webkit-box-pack: end;
+    -webkit-box-direction: reverse;
+    -webkit-box-orient: horizontal;
+    -webkit-flex-direction: row-reverse;
+    flex-direction: row-reverse;
+  }@else if($direction == top) {
+    -webkit-box-direction: normal;
+    -webkit-box-orient: vertical;
+    -webkit-flex-direction: column;
+    flex-direction: column;
+  }@else if($direction == bottom) {
+    -webkit-box-pack: end;
+    -webkit-box-direction: reverse;
+    -webkit-box-orient: vertical;
+    -webkit-flex-direction: column-reverse;
+    flex-direction: column-reverse;
+  }
+}

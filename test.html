@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=yes, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+  <title>Document</title>
+  <!--<link rel="stylesheet" href="stylesheets/invite.css"/>-->
+  <link rel="stylesheet" href="stylesheets/apps/invite/test.css"/>
+  <style>
+    /* css样式 */
+
+    .box {
+      width: 200px;
+      height: 100px;
+      box-sizing: border-box;
+      border: none;
+    }
+
+    /* 去掉元素原有的边框 */
+    .retina-border {
+      position: relative;
+      border: none;
+    }
+
+    /* 通过设置伪元素放大到2倍的宽高，设置1px边框，再缩小1倍，以达到0.5px边框的效果*/
+    .retina-border:after {
+      content: '';
+      display: block;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      left: 0;
+      top: 0;
+      box-sizing: border-box;
+      border: 0 solid #aaa;
+      -webkit-transform-origin: left top;
+      transform-origin: left top;
+      -webkit-transform: scale(.5);
+      transform: scale(.5);
+    }
+
+    .rt-bd-all:after {
+      border-bottom-width: 1px;
+      border-top-width: 1px;
+      border-left-width: 1px;
+      border-right-width: 1px;
+    }
+    .tr-bd-b:after {
+      border-bottom-width: 1px;
+    }
+
+    .tr-bd-t:after {
+      border-top-width: 1px;
+    }
+
+    .tr-bd-l:after {
+      border-left-width: 1px;
+    }
+
+    .tr-bd-r:after {
+      border-right-width: 1px;
+    }
+  </style>
+</head>
+<body>
+<div class="demo1">
+  fslflllllfds
+</div>
+<!--<div class="demo2">fe54545454</div>-->
+<!--<div class="demo3">fdsfdsf</div>-->
+<!--<div class="demo4">343434343</div>-->
+<div class="tips">
+  <span class="caret"></span>
+  <i class="caret-1"></i>
+  我是一个tooltip
+</div>
+<div class="test">yes oh no!</div>
+<button class="button disabled">测试按钮</button>
+<div class="color-test">
+  fslfjsdklf
+</div>
+<button>测试normalize.css</button>
+<input type="file"/>
+<div class="font-smaller">测试10px的字体</div>
+
+<div class="box retina-border rt-bd-all"></div>
+<div class="border-one"></div>
+<br />
+<br />
+<br />
+<br />
+<div style="border:1px solid #ddd;"></div>
+
+</body>
+</html>

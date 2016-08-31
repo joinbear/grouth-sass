@@ -1,0 +1,50 @@
+@charset "utf-8";
+@import "compass";
+@import "../../m-mascot/mascot";
+@import "./_self-variable";
+.color-test {
+  color: color(red,dark);
+  background-color: color(yellow,lighter);
+  width: px2rem(750px);
+  font-size: 12px;
+  background-image: inline-image("../images/12.jpg");
+}
+
+.tips {
+  width: 300px;
+  height: 200px;
+  line-height: 50px;
+  text-align: center;
+  position: relative;
+  margin: 20px auto;
+  border: 1px solid orange;
+  border-radius: 3px;
+
+  .caret {
+    @include caret-arrow(20px,2px,orange,#fff,top){
+      top: -20px;
+      right:100px;
+    }
+  }
+  .caret-1 {
+    @include caret-fill(30px,red){
+      top: 100%;
+      left: 100px;
+    }
+  }
+}
+.font-smaller {
+  @include font-smaller();
+}
+
+.border-one {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  margin-top: 30px;
+  border: 0 none;
+  margin-left: 100px;
+  @include border-one-px(){
+    border: 1px solid red;
+  };
+}

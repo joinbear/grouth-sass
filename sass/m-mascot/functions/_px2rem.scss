@@ -1,0 +1,16 @@
+@function px2rem($px) {
+  @if (unitless($px)) {
+
+    @warn "Assuming #{$px} to be in pixels, attempting to convert it into pixels for you";
+    @return px2rem($px + 0px); // That may fail.
+
+  } @else if (unit($px) == rem) {
+
+    @return $px;
+
+  } @else {
+
+  	@return ( $px * 10 / $design-width ) * 1rem;
+
+  }
+}

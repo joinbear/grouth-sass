@@ -1,0 +1,6 @@
+@import '../placeholder/placeholder';
+@import '../functions/function';
+
+@mixin text-align($type: left,$placeholder: true) {
+  @include element-build(text-align,$type,$placeholder);
+}

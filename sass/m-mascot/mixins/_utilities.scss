@@ -1,0 +1,17 @@
+@import '../placeholder/placeholder';
+
+@mixin pointer() {
+  @include placeholder(cursor,pointer);
+}
+
+@mixin yen() {
+  @include placeholder(font-family,sans-serif);
+}
+
+@mixin under-line() {
+  @include placeholder(text-decoration,under-line);
+}
+@mixin password(){
+  -webkit-text-security: disc;
+}
+

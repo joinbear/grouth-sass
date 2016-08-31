@@ -1,0 +1,127 @@
+@font-face {
+	font-family: "Icons";
+	src: url('../iconfonts/Icons.eot');
+	src: url('../iconfonts/Icons.eot?#iefix') format('eot'),
+		url('../iconfonts/Icons.woff') format('woff'),
+		url('../iconfonts/Icons.ttf') format('truetype'),
+		url('../iconfonts/Icons.svg#Icons') format('svg');
+}
+
+@mixin icon-styles {
+	font-family: "Icons";
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: normal;
+	// speak: none; // only necessary if not using the private unicode range (firstGlyph option)
+	text-decoration: none;
+	text-transform: none;
+}
+
+%icon {
+	@include icon-styles;
+}
+
+@function icon-char($filename) {
+	$char: "";
+
+	@if $filename == iconfont-birth {
+		$char: "\E001";
+	}
+	@if $filename == iconfont-email {
+		$char: "\E002";
+	}
+	@if $filename == iconfont-house {
+		$char: "\E003";
+	}
+	@if $filename == iconfont-phone {
+		$char: "\E004";
+	}
+	@if $filename == iconfont-qq {
+		$char: "\E005";
+	}
+	@if $filename == iconfont-shijian {
+		$char: "\E006";
+	}
+	@if $filename == iconfont-tel {
+		$char: "\E007";
+	}
+	@if $filename == iconfont-tianjia {
+		$char: "\E008";
+	}
+	@if $filename == iconfont-user {
+		$char: "\E009";
+	}
+	@if $filename == iconfont-weituo {
+		$char: "\E00A";
+	}
+	@if $filename == iconfont-wrench {
+		$char: "\E00B";
+	}
+	@if $filename == iconfont-xiangji {
+		$char: "\E00C";
+	}
+	@if $filename == iconfont-xiezuo {
+		$char: "\E00D";
+	}
+	@if $filename == iconfont-yaoshi {
+		$char: "\E00E";
+	}
+
+	@return $char;
+}
+
+@mixin icon($filename, $insert: before, $extend: true) {
+	&:#{$insert} {
+		@if $extend {
+			@extend %icon;
+		} @else {
+			@include icon-styles;
+		}
+		content: icon-char($filename);
+	}
+}
+
+.icon-iconfont-birth {
+	@include icon(iconfont-birth);
+}
+.icon-iconfont-email {
+	@include icon(iconfont-email);
+}
+.icon-iconfont-house {
+	@include icon(iconfont-house);
+}
+.icon-iconfont-phone {
+	@include icon(iconfont-phone);
+}
+.icon-iconfont-qq {
+	@include icon(iconfont-qq);
+}
+.icon-iconfont-shijian {
+	@include icon(iconfont-shijian);
+}
+.icon-iconfont-tel {
+	@include icon(iconfont-tel);
+}
+.icon-iconfont-tianjia {
+	@include icon(iconfont-tianjia);
+}
+.icon-iconfont-user {
+	@include icon(iconfont-user);
+}
+.icon-iconfont-weituo {
+	@include icon(iconfont-weituo);
+}
+.icon-iconfont-wrench {
+	@include icon(iconfont-wrench);
+}
+.icon-iconfont-xiangji {
+	@include icon(iconfont-xiangji);
+}
+.icon-iconfont-xiezuo {
+	@include icon(iconfont-xiezuo);
+}
+.icon-iconfont-yaoshi {
+	@include icon(iconfont-yaoshi);
+}

@@ -1,0 +1,6 @@
+@import '../placeholder/placeholder';
+@import '../functions/function';
+
+@mixin display($type: block,$placeholder:true) {
+  @include element-build(display,$type,$placeholder);
+}

@@ -1,0 +1,29 @@
+@import '../placeholder/placeholder';
+@import '../functions/function';
+@import './scale';
+
+@mixin border-radius($radius,$placeholder:false) {
+
+  @include element-build(border-radius,$radius,$placeholder);
+
+}
+
+@mixin border-one-px() {
+  $border-map:(
+    content: '',
+    display: block,
+    width: 100%,
+    height: 100%,
+    position: absolute,
+    left: 0,
+    top: 0,
+    -webkit-transform-origin: left top,
+    transform-origin: left top,
+    -webkit-transform: scale(.5),
+    transform: scale(.5)
+  );
+  &:after {
+    @include map-element-build($border-map,false);
+    @content;
+  }
+}

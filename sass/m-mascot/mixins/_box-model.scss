@@ -1,0 +1,5 @@
+@mixin flex() {
+  display: -webkit-flex; /* 新版本语法: Chrome 21+ */
+  display: -webkit-box; /* 老版本语法: Safari, iOS, Android browser, older WebKit browsers. */
+  display: flex; /* 新版本语法: Opera 12.1, Firefox 22+ */
+}

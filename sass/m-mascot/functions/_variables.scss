@@ -1,0 +1,91 @@
+@charset "utf-8";
+
+// /**
+//  * rem是相对于根元素的一种长度关系，浏览器默认根元素<html>为16px
+//  * 10 ÷ 16 × 100% = 62.5%，font-size:62.5%;1rem=10px;由于google的
+//  * 最小字体12px，造成rem在webkit内核下有bug，因此将根元素字体放大
+//  * 一倍即125%，1rem=20px，在使用中再将值缩小一倍(建议用在html5和移动端)
+//  */
+
+// z-index
+$z-index-header:                   940 !default;
+$z-index-footer:                   900 !default;
+$z-index-mask:                     980 !default; // 默认高于header和footer部分
+$z-index-overlay:                  990 !default; // 默认高于遮罩层
+
+// form element input button select radio checkbox input[date]
+$form-element : true true false false false false;
+
+
+
+// Cool
+$aqua:                           #7fdbff;
+$blue:                           #0074d9;
+$navy:                           #001f3f;
+$teal:                           #39cccc;
+$green:                          #7eb763;
+$olive:                          #3d9970;
+$lime:                           #01ff70;
+
+// Warm
+$yellow:                         #ffdc00;
+$orange:                         #ff851b;
+$red:                            #ff0000;
+$fuchsia:                        #f012be;
+$purple:                         #b10dc9;
+$maroon:                         #85144b;
+
+// link
+//-----------------------------------------------------
+// 如果只有一个值则滑过的值为这个值的darken 5%，如果
+// 有两个值则第二个值为滑过的值
+$liner-colors: #08c !default;
+
+$black:                          #000 !default;
+
+$white:                          white !default;
+
+// gray
+$gray-darker:            lighten($black, 13.5%) !default; // #222
+$gray-dark:              lighten($black, 20%) !default;   // #333
+$gray:                   lighten($black, 33.5%) !default; // #555
+$gray-light:             lighten($black, 46.7%) !default; // #777
+$gray-lighter:           lighten($black, 93.5%) !default; // #eee
+
+// brand
+$brand-primary:          darken(#428bca, 6.5%) !default; // #337ab7
+$brand-success:          #5cb85c !default;
+$brand-info:             #5bc0de !default;
+$brand-warning:          #f0ad4e !default;
+$brand-danger:           #d9534f !default;
+
+
+//Global Color Map
+$global-color-map:
+(group: gray, id: normal, color: $gray),
+(group: gray, id: darker, color: $gray-darker),
+(group: gray, id: dark, color: $gray-dark),
+(group: gray, id: light, color: $gray-light),
+(group: gray, id: lighter, color: $gray-lighter),
+(group: black, id: normal, color: black),
+(group: white, id: normal, color: $white),
+(group: white, id: darker, color: #f1f1f1),
+(group: white, id: dark, color: #fafafa),
+(group: brand, id: normal, color: $brand-primary),
+(group: brand, id: success, color: $brand-success),
+(group: brand, id: info, color: $brand-info),
+(group: brand, id: warning, color: $brand-warning),
+(group: brand, id: danger, color: $brand-danger)
+(group: cool, id: normal, color: $aqua),
+(group: cool, id: success, color: $blue),
+(group: cool, id: info, color: $navy),
+(group: cool, id: warning, color: $teal),
+(group: cool, id: warning, color: $olive),
+(group: cool, id: warning, color: $lime),
+(group: cool, id: danger, color: $green),
+(group: cool, id: normal, color: $yellow),
+(group: cool, id: success, color: $orange),
+(group: cool, id: info, color: $red),
+(group: cool, id: warning, color: $fuchsia),
+(group: cool, id: warning, color: $purple),
+(group: cool, id: danger, color: $maroon);
